@@ -24,3 +24,10 @@ I added advanced filtering, grouping with multiple conditions, conditional aggre
 
 3) Advanced Level: 
 These involve complex joins, window functions, CTEs (Common Table Expressions), and subqueries for richer, layered analysis.
+
+
+Key Insights Derived:
+1) Product Performance: Identified best-sellers and underperforming products within each store, along with category-level sales contributions.
+2) Store Performance: Highlighted stores that perform above and below average, with insights into peak hours to optimize staffing and stock.
+3) Customer Behavior: Uncovered patterns in purchase frequency and preferred shopping hours.
+4) Growth Analysis: Provided month-over-month growth trends for product categories, assisting in understanding seasonal or promotional impacts.
