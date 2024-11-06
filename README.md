@@ -16,11 +16,11 @@ The CSV file contains a single sheet named "Transactions". The "Transactions" sh
 
 I enhanced each category with deeper, more complex SQL queries that will be analysed the Coffee Shop Sales dataset in-depth. Here’s what I did for each level:
 
-1) Basic Level
+1) Basic Level: 
 I added foundational insights that go beyond simple retrieval, including distinct counts, conditional filtering, and basic arithmetic on columns.
 
-2) Intermediate Level
+2) Intermediate Level: 
 I added advanced filtering, grouping with multiple conditions, conditional aggregations, and ranking functions for detailed insights.
 
-3) Advanced Level
+3) Advanced Level: 
 These involve complex joins, window functions, CTEs (Common Table Expressions), and subqueries for richer, layered analysis.
