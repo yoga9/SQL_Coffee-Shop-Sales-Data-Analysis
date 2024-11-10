@@ -29,7 +29,7 @@ FROM Transactions;
 -- Insight: This provides revenue at a per-transaction level, useful for calculating averages or trends.
 
 
-4)	List transactions where the unit price is above the average price of all products.
+-- 4)	List transactions where the unit price is above the average price of all products.
 SELECT *
 FROM Transactions
 WHERE unit_price > (SELECT AVG(unit_price) FROM Transactions);
@@ -37,7 +37,7 @@ WHERE unit_price > (SELECT AVG(unit_price) FROM Transactions);
 -- Insight: Identifies transactions involving premium-priced products, useful for premium segment analysis.
 
 
-5)	Count the number of transactions per hour.
+-- 5)	Count the number of transactions per hour.
 SELECT DATEPART(HOUR, transaction_time) AS hour, 
        COUNT(transaction_id) AS transactions_count
 FROM Transactions
@@ -83,7 +83,8 @@ ORDER BY total_quantity_sold DESC
 SELECT store_location, 
        Round(SUM(transaction_qty * unit_price),1) AS total_revenue
 FROM Transactions
-WHERE transaction_date BETWEEN '2023-01-01' AND '2023-03-31'
+-- WHERE transaction_date BETWEEN '2023-01-01' AND '2023-03-31'
+WHERE Datepart(QUARTER,transaction_date) = 1
 GROUP BY store_location
 ORDER BY total_revenue DESC;
  
@@ -96,7 +97,7 @@ SELECT store_id,
        SUM(transaction_qty * unit_price) AS total_sales,
        RANK() OVER (PARTITION BY store_id ORDER BY SUM(transaction_qty * unit_price) DESC) AS product_rank
 FROM Transactions
-where store_id = 3
+-- where store_id = 3
 GROUP BY store_id, product_id, product_detail;
 
 -- Insight: Ranks products in terms of sales within each store, showing which products perform best at a local level.
@@ -115,7 +116,7 @@ ORDER BY sales_percentage DESC;
 
 -- Advanced Level Queries:
 
--- 1)	Determine each store’s peak sales hour.
+-- 1)	Determine each storeâ€™s peak sales hour.
 WITH hourly_sales AS (
     SELECT store_id,
            DATEPART(HOUR,transaction_time) AS hour,
@@ -125,10 +126,10 @@ WITH hourly_sales AS (
 )
 SELECT store_id, 
        hour, 
-       MAX(sales) AS peak_sales
+        Round(MAX(sales),2) AS peak_sales
 FROM hourly_sales
 GROUP BY store_id, hour
-ORDER BY store_id, hour desc;
+ORDER BY store_id, peak_sales desc;
 
 -- Insight: Identifies peak sales hour for each store, which is valuable for staffing and promotional strategies.
 
